@@ -1,1 +1,28 @@
-<p>header works!</p>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Portfolio Dashboard</a>
+        </div>
+        <!-- collapse and navbar-collapse is used to adjust the nav bar in case of access in mobile screen-->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a href="#" routerlink="/summary">Summary</a></li>
+                <li routerLinkActive="active"><a href="#" routerlink="/shares">Shares</a></li>
+                <li routerLinkActive="active"><a href="#" routerlink="/mutual-funds">Mutual Funds</a></li>
+                <li routerLinkActive="active"><a href="#" routerlink="/bonds">Bonds</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="cursor: pointer;">Login</a></li>
+                <li class="dropdown">
+                    <a role="button" class="dropdown-toggle" style="cursor: pointer;">
+                        My Account<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">My Profile</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
