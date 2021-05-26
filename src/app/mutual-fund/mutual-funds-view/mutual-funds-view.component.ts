@@ -13,7 +13,7 @@ export class MutualFundsViewComponent implements OnInit {
   @ViewChild('searchForm') searchForm: NgForm;
 
   fundSearchResultData: FundSearchResult[] = [];
-  searchCompleted: boolean = false;
+  isSearchCompleted: boolean = false;
 
   constructor(private mutualFundService: MutualFundService) { }
 
@@ -22,13 +22,18 @@ export class MutualFundsViewComponent implements OnInit {
 
   onSearch() {
     const query = this.searchForm.value['mutualFundSearch'];
-    this.searchCompleted = false;
+    this.isSearchCompleted = false;
     this.mutualFundService.searchFunds(query)
       .subscribe(searchResult => {
         this.fundSearchResultData = searchResult
-        this.searchCompleted = true;
+        this.isSearchCompleted = true;
         console.log(this.fundSearchResultData);
       });
+  }
+
+  onGetFundDetails(schemeCode: string) {
+    console.log(schemeCode);
+    this.mutualFundService.getFundDetails(schemeCode);
   }
 
 }

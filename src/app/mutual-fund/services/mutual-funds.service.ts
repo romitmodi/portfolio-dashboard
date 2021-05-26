@@ -16,4 +16,10 @@ export class MutualFundService {
             );
     }
 
+    getFundDetails(schemeCode: string) {
+        return this.httpClient.get(
+            environment.mfApi + schemeCode
+        ).subscribe(response => console.log(response));
+    }
+
 }
