@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-mutual-funds-view',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MutualFundsViewComponent implements OnInit {
 
+  @ViewChild('searchForm') searchForm: NgForm;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSearch() {
+    console.log(this.searchForm.value);
   }
 
 }
