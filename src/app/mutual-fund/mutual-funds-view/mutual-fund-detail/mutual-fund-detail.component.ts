@@ -15,6 +15,8 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
   columnnames: string[] = ['date', 'nav'];
   type: string = 'Line';
+  width = 800;
+  height = 400;
   data = [];
   options = {
     hAxis: {
@@ -24,21 +26,18 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
       title: 'Nav'
     }
   };
-  width = 800;
-  height = 400;
 
   constructor(private mutualFundService: MutualFundService) { }
 
   ngOnInit(): void {
     this.fundDetailSubscription = this.mutualFundService.fundDetailSubject
       .subscribe(fundDetail => {
+        this.data = [];
         this.fundDetails = fundDetail;
         this.fundDetails.data.forEach(data => {
           this.data.push([data.date, +data.nav]);
         });
         this.data.reverse();
-        console.log(this.fundDetails);
-        console.log(this.data);
       });
   }
 
