@@ -15,7 +15,7 @@ export class MutualFundsViewComponent implements OnInit {
 
   isSearchCompleted: boolean = false;
   fundSearchResultData: FundSearchResult[] = [];
-  fundDetails: FundDetails;
+  isFundDetailsAvailable: boolean = false;
 
   constructor(private mutualFundService: MutualFundService) { }
 
@@ -25,6 +25,7 @@ export class MutualFundsViewComponent implements OnInit {
   onSearch() {
     const query = this.searchForm.value['mutualFundSearch'];
     this.isSearchCompleted = false;
+    this.isFundDetailsAvailable = false;
     this.mutualFundService.searchFunds(query)
       .subscribe(searchResult => {
         this.fundSearchResultData = searchResult
@@ -34,11 +35,8 @@ export class MutualFundsViewComponent implements OnInit {
   }
 
   onGetFundDetails(schemeCode: string) {
-    this.mutualFundService.getFundDetails(schemeCode)
-      .subscribe(fundDetails => {
-        this.fundDetails = fundDetails;
-        console.log(this.fundDetails);
-      });
+    this.mutualFundService.getFundDetails(schemeCode);
+    this.isFundDetailsAvailable = true;
   }
 
 }

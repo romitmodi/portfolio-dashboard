@@ -30,8 +30,8 @@
                 </ul>
             </div>
         </div>
-        <div class="row" *ngIf="fundDetails && fundDetails.status">
-            <app-mutual-fund-detail [fundDetail]="fundDetails"></app-mutual-fund-detail>
+        <div class="row" *ngIf="isFundDetailsAvailable">
+            <app-mutual-fund-detail></app-mutual-fund-detail>
         </div>
     </div>
 </div>
