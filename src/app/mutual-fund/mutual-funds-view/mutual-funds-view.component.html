@@ -21,6 +21,7 @@
         </div>
         <div class="row" *ngIf="isSearchCompleted">
             <div class="col-xs-12">
+                <label for="searchResul">Search Result</label>
                 <ul>
                     <div class="row" 
                         *ngFor="let fundSearchData of fundSearchResultData; let i=index;">
@@ -28,6 +29,9 @@
                     </div>
                 </ul>
             </div>
+        </div>
+        <div class="row" *ngIf="fundDetails && fundDetails.status">
+            <app-mutual-fund-detail [fundDetail]="fundDetails"></app-mutual-fund-detail>
         </div>
     </div>
 </div>

@@ -12,6 +12,8 @@ import { SummaryViewComponent } from './summary/summary-view/summary-view.compon
 import { SharesViewComponent } from './shares/shares-view/shares-view.component';
 import { MutualFundsViewComponent } from './mutual-fund/mutual-funds-view/mutual-funds-view.component';
 import { BondsViewComponent } from './bonds/bonds-view/bonds-view.component';
+import { MutualFundDetailComponent } from './mutual-fund/mutual-funds-view/mutual-fund-detail/mutual-fund-detail.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { BondsViewComponent } from './bonds/bonds-view/bonds-view.component';
     SummaryViewComponent,
     SharesViewComponent,
     MutualFundsViewComponent,
-    BondsViewComponent
+    BondsViewComponent,
+    MutualFundDetailComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    GoogleChartsModule,
     AppRoutingModule
   ],
   providers: [],

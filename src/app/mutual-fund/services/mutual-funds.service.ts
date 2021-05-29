@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
+import { FundDetails } from "../model/fund-detail.model";
 import { FundSearchResult } from "../model/fund-search-result.model";
 
 @Injectable({ providedIn: 'root' })
@@ -17,9 +18,9 @@ export class MutualFundService {
     }
 
     getFundDetails(schemeCode: string) {
-        return this.httpClient.get(
+        return this.httpClient.get<FundDetails>(
             environment.mfApi + schemeCode
-        ).subscribe(response => console.log(response));
+        );
     }
 
 }
