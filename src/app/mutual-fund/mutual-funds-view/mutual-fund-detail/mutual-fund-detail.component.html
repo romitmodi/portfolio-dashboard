@@ -1,8 +1,11 @@
-<p class="bold-text">{{fundDetails.meta.scheme_name + ' - '+fundDetails.status}}</p>
-<google-chart [type]="type"
-              [data]="data"
-              [columns]="columnnames"
-              [options]="options"
-              [width]="width"
-              [height]="height">
-</google-chart>
+<div *ngIf="fundDetails">
+    <h3>{{fundDetails.meta.scheme_name}}</h3>
+    <p>{{fundDetails.meta.scheme_category}}</p>
+    <google-chart [type]="type"
+                [data]="data"
+                [columns]="columnnames"
+                [options]="options"
+                [width]="width"
+                [height]="height">
+    </google-chart>
+</div>

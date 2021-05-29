@@ -36,8 +36,9 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
         this.fundDetails.data.forEach(data => {
           this.data.push([data.date, +data.nav]);
         });
-        this.data.sort((d1, d2) => (new Date(d2[0]).getTime() - new Date(d1[0]).getTime()));
+        this.data.reverse();
         console.log(this.fundDetails);
+        console.log(this.data);
       });
   }
 
