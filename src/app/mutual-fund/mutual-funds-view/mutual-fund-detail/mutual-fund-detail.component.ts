@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ChartConfig } from 'src/app/common/model/chart-config.model';
 import { FundDetail } from '../../model/fund-detail.model';
@@ -11,6 +12,7 @@ import { MutualFundService } from '../../services/mutual-funds.service';
 })
 export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
+  @ViewChild('fundDetailForPortfolio') fundDetailForm: NgForm;
   fundDetailSubscription: Subscription;
   fundDetails: FundDetail;
   currentNav: number;
@@ -49,7 +51,9 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
   }
 
   onAddFund() {
-    console.log(this.fundDetails.meta.scheme_code);
+    console.log(this.fundDetailForm.value);
+    this.mutualFundService.addFundToUserPortfolio();
+    this.addFundToPortfolio = false;
   }
 
   onCancel() {

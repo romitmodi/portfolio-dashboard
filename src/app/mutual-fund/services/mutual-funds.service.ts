@@ -28,4 +28,8 @@ export class MutualFundService {
         });
     }
 
+    addFundToUserPortfolio() {
+        //TODO: API to save Data to User Portfolio
+    }
+
 }
