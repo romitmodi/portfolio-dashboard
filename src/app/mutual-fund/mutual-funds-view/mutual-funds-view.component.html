@@ -20,9 +20,9 @@
                 </div>
             </form>
         </div>
-        <div class="row" *ngIf="isSearchCompleted">
-            <div class="col-md-12">
-                <label for="searchResul">Search Result</label>
+        <div class="row" >
+            <div class="col-md-8" *ngIf="isSearchCompleted">
+                <label for="searchResult">Search Result</label>
                 <ul>
                     <div class="row" 
                         *ngFor="let fundSearchData of fundSearchResultData; let i=index;">
@@ -34,6 +34,9 @@
                         </li>
                     </div>
                 </ul>
+            </div>
+            <div class="col-md-4">
+                <label for="recentSearch">Recent Search</label>
             </div>
         </div>
         <div class="row" *ngIf="isFundDetailsAvailable">
