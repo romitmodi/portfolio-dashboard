@@ -4,20 +4,25 @@
         <p>{{fundDetails.meta.scheme_category}}</p>
         <div class="row">
             <div class="col-xs-12">
-                <google-chart [type]="type" 
-                            [data]="data"
-                            [columns]="columnnames"
-                            [options]="options"
-                            [width]="width"
-                            [height]="height"
-                            dynamicResize="true">
+                <google-chart [type]="type" [data]="data" [columns]="columnnames" [options]="options" [width]="width"
+                    [height]="height" dynamicResize="true">
                 </google-chart>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
-                <label for="fundHouse">Fund House  </label>
-                <span>{{fundDetails.meta.fund_house}}</span>
+            <div class="col-xs-4">
+                <label for="fundHouse">Fund House</label>
+                <p>{{fundDetails.meta.fund_house}}</p>
+            </div>
+            <div class="col-xs-4">
+                <label for="fundHouse">Scheme Type</label>
+                <p>{{fundDetails.meta.scheme_type}}</p>
+            </div>
+            <div class="col-xs-4">
+                <label for="fundHouse">Current Nav </label><span> (as on {{fundDetails.data[0].date}})</span>
+                <p [ngStyle]="{'color': changePercent>0 ? 'green':'red'}">
+                    {{currentNav | currency :'INR'}} ({{changePercent | percent :'1.1-2'}})
+                </p>
             </div>
         </div>
     </div>

@@ -12,6 +12,8 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
   fundDetails: FundDetail;
   fundDetailSubscription: Subscription;
+  currentNav: number;
+  changePercent: number;
 
   columnnames: string[] = ['date', 'nav'];
   type: string = 'Line';
@@ -34,6 +36,8 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
       .subscribe(fundDetail => {
         this.data = [];
         this.fundDetails = fundDetail;
+        this.currentNav = +this.fundDetails.data[0].nav;
+        this.changePercent = (+this.fundDetails.data[0].nav - +this.fundDetails.data[1].nav) / (+this.fundDetails.data[0].nav)
         this.fundDetails.data.forEach(data => {
           this.data.push([data.date, +data.nav]);
         });
