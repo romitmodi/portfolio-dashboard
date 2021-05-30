@@ -18,7 +18,7 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
   chartConfig: ChartConfig;
 
   constructor(private mutualFundService: MutualFundService) {
-    this.chartConfig = new ChartConfig('Line', [], ['date', 'nav'], {
+    this.chartConfig = new ChartConfig('Line', [], ['Date', 'Nav'], {
       'hAxis': {
         'title': 'Date'
       },
