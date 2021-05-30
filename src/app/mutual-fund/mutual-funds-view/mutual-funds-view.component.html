@@ -25,15 +25,21 @@
                 <ul>
                     <div class="row" 
                         *ngFor="let fundSearchData of fundSearchResultData; let i=index;">
-                        <li><a style="cursor: pointer;" (click)="onGetFundDetails(fundSearchData.schemeCode)">{{fundSearchData.schemeName}}</a></li>
+                        <li>
+                            <a style="cursor: pointer;"
+                            (click)="onGetFundDetails(fundSearchData.schemeCode)">
+                                {{fundSearchData.schemeName}}
+                            </a>
+                        </li>
                     </div>
                 </ul>
             </div>
         </div>
-        <div class="row" *ngIf="isFundDetailsAvailable">
-            <div class="col-xs-12">
-                <app-mutual-fund-detail></app-mutual-fund-detail>
-            </div>
-        </div>
+    </div>
+</div>
+<div class="row" *ngIf="isFundDetailsAvailable">
+    <hr/>
+    <div class="col-xs-12">
+        <app-mutual-fund-detail></app-mutual-fund-detail>
     </div>
 </div>
