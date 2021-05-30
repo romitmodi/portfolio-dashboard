@@ -10,13 +10,13 @@
                     as on {{fundDetails.data[0].date}}
                 </p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" *ngIf="!addFundToPortfolio">
                 <br/>
-                <button class="btn btn-primary" type="button">Add to My Portfolio</button>
+                <button class="btn btn-primary" type="button" (click)="onAddFundToMyPortfolio()">Add to My Portfolio</button>
             </div>
         </div>        
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <google-chart [type]="chartConfig.type"
                               [data]="chartConfig.data"
                               [columns]="chartConfig.columnNames"
@@ -24,6 +24,26 @@
                               [width]="chartConfig.width"
                               [height]="chartConfig.height">
                 </google-chart>
+            </div>
+            <div class="col-md-3 form-group" *ngIf="addFundToPortfolio">
+                <div class="row">
+                    <label for="fundinfo">Fund Information for Portfolio</label>
+                </div>
+                <form (ngSubmit)="onAddFund()" #fundDetailForPortfolio>
+                    <div class="row">
+                        <label for="currentInvestment">Current Investment</label>
+                        <input type="text" name="currentInvestment" id="currentInvestement" class="form-control" required>
+                    </div>
+                    <div class="row">
+                        <label for="currentUnit">Current Unit Holding</label>
+                        <input type="text" name="currentUnit" id="currentUnit" class="form-control" required>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <button class="btn btn-success" type="button">Save</button> |
+                        <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="row">

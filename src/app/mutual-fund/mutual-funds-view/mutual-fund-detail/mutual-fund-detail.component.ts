@@ -16,6 +16,7 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
   currentNav: number;
   changePercent: number;
   chartConfig: ChartConfig;
+  addFundToPortfolio: boolean = false;
 
   constructor(private mutualFundService: MutualFundService) {
     this.chartConfig = new ChartConfig('Line', [], ['Date', 'Nav'], {
@@ -41,6 +42,18 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
         });
         this.chartConfig.data.reverse();
       });
+  }
+
+  onAddFundToMyPortfolio() {
+    this.addFundToPortfolio = true;
+  }
+
+  onAddFund() {
+    console.log(this.fundDetails.meta.scheme_code);
+  }
+
+  onCancel() {
+    this.addFundToPortfolio = false;
   }
 
   ngOnDestroy(): void {
