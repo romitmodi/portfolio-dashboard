@@ -25,7 +25,7 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
       'vAxis': {
         'title': 'Nav'
       }
-    }, '100%', '100%');
+    }, '400', '800');
   }
 
   ngOnInit(): void {
