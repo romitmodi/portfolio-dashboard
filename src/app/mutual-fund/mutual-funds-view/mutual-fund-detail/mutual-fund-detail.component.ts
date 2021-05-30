@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FundDetails } from '../../model/fund-detail.model';
+import { FundDetail } from '../../model/fund-detail.model';
 import { MutualFundService } from '../../services/mutual-funds.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MutualFundService } from '../../services/mutual-funds.service';
 })
 export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
-  fundDetails: FundDetails;
+  fundDetails: FundDetail;
   fundDetailSubscription: Subscription;
 
   columnnames: string[] = ['date', 'nav'];

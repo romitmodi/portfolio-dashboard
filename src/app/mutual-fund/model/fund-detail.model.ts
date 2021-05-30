@@ -6,7 +6,7 @@ export interface FundMetaData {
     scheme_type: string
 }
 
-export interface FundDetails {
+export interface FundDetail {
     meta: FundMetaData,
     data: { date: string, nav: string }[],
     status: string

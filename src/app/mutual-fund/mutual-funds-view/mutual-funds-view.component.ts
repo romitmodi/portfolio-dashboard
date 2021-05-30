@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FundDetails } from '../model/fund-detail.model';
 import { FundSearchResult } from '../model/fund-search-result.model';
 import { MutualFundService } from '../services/mutual-funds.service';
 
