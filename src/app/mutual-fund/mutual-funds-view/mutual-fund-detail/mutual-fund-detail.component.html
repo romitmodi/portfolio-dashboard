@@ -3,7 +3,12 @@
         <div class="row">
             <div class="col-md-8">
                 <h3>{{fundDetails.meta.scheme_name}} </h3>
-                <p>{{fundDetails.meta.scheme_category}}</p>
+                <p>
+                   <span [ngStyle]="{'color': changePercent> 0 ? 'green':'red'}">
+                       {{currentNav | currency :'INR'}} ({{changePercent | percent :'1.1-2'}})
+                    </span>
+                    as on {{fundDetails.data[0].date}}
+                </p>
             </div>
             <div class="col-md-4">
                 <br/>
@@ -29,12 +34,6 @@
             <div class="col-md-4">
                 <label for="fundHouse">Scheme Type</label>
                 <p>{{fundDetails.meta.scheme_type}}</p>
-            </div>
-            <div class="col-md-4">
-                <label for="fundHouse">Current Nav </label><span> (as on {{fundDetails.data[0].date}})</span>
-                <p [ngStyle]="{'color': changePercent>0 ? 'green':'red'}">
-                    {{currentNav | currency :'INR'}} ({{changePercent | percent :'1.1-2'}})
-                </p>
             </div>
             <div class="col-md-4">
                 <label for="fundHouse">Scheme Category</label>
