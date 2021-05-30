@@ -35,9 +35,11 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
     this.fundDetailSubscription = this.mutualFundService.fundDetailSubject
       .subscribe(fundDetail => {
         this.data = [];
+        const currentNav = +this.fundDetails.data[0].nav;
+        const yesterdayNav = +this.fundDetails.data[1].nav;
         this.fundDetails = fundDetail;
-        this.currentNav = +this.fundDetails.data[0].nav;
-        this.changePercent = (+this.fundDetails.data[0].nav - +this.fundDetails.data[1].nav) / (+this.fundDetails.data[0].nav)
+        this.currentNav = currentNav;
+        this.changePercent = (+currentNav - yesterdayNav ? yesterdayNav : 0) / (currentNav)
         this.fundDetails.data.forEach(data => {
           this.data.push([data.date, +data.nav]);
         });
