@@ -15,7 +15,7 @@ export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
   columnnames: string[] = ['date', 'nav'];
   type: string = 'Line';
-  width = 800;
+  width = 700;
   height = 400;
   data = [];
   options = {
