@@ -4,8 +4,8 @@
         <p>{{fundDetails.meta.scheme_category}}</p>
         <div class="row">
             <div class="col-xs-12">
-                <google-chart [type]="type" [data]="data" [columns]="columnnames" [options]="options" [width]="width"
-                    [height]="height" dynamicResize="true">
+                <google-chart [type]="chartConfig.type" [data]="chartConfig.data" [columns]="chartConfig.columnnames" [options]="chartConfig.options" [width]="chartConfig.width"
+                    [height]="chartConfig.height">
                 </google-chart>
             </div>
         </div>

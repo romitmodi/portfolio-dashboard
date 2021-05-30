@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ChartConfig } from 'src/app/common/model/chart-config.model';
 import { FundDetail } from '../../model/fund-detail.model';
 import { MutualFundService } from '../../services/mutual-funds.service';
 
@@ -10,39 +11,35 @@ import { MutualFundService } from '../../services/mutual-funds.service';
 })
 export class MutualFundDetailComponent implements OnInit, OnDestroy {
 
-  fundDetails: FundDetail;
   fundDetailSubscription: Subscription;
+  fundDetails: FundDetail;
   currentNav: number;
   changePercent: number;
+  chartConfig: ChartConfig;
 
-  columnnames: string[] = ['date', 'nav'];
-  type: string = 'Line';
-  width = 700;
-  height = 400;
-  data = [];
-  options = {
-    hAxis: {
-      title: 'Date'
-    },
-    vAxis: {
-      title: 'Nav'
-    }
-  };
-
-  constructor(private mutualFundService: MutualFundService) { }
+  constructor(private mutualFundService: MutualFundService) {
+    this.chartConfig = new ChartConfig('Line', [], ['date', 'nav'], {
+      'hAxis': {
+        'title': 'Date'
+      },
+      'vAxis': {
+        'title': 'Nav'
+      }
+    }, '100%', '100%');
+  }
 
   ngOnInit(): void {
     this.fundDetailSubscription = this.mutualFundService.fundDetailSubject
       .subscribe(fundDetail => {
-        this.data = [];
         this.fundDetails = fundDetail;
         this.currentNav = +this.fundDetails.data[0].nav;
         const yesterdayNav = this.fundDetails.data.length >= 2 ? +this.fundDetails.data[1].nav : this.currentNav;
         this.changePercent = (this.currentNav - yesterdayNav) / (yesterdayNav)
+        this.chartConfig.data = [];
         this.fundDetails.data.forEach(data => {
-          this.data.push([data.date, +data.nav]);
+          this.chartConfig.data.push([data.date, +data.nav]);
         });
-        this.data.reverse();
+        this.chartConfig.data.reverse();
       });
   }
 
