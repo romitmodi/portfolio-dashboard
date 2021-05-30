@@ -1,11 +1,24 @@
-<div *ngIf="fundDetails">
-    <h3>{{fundDetails.meta.scheme_name}}</h3>
-    <p>{{fundDetails.meta.scheme_category}}</p>
-    <google-chart [type]="type"
-                [data]="data"
-                [columns]="columnnames"
-                [options]="options"
-                [width]="width"
-                [height]="height">
-    </google-chart>
+<div class="row" *ngIf="fundDetails">
+    <div class="col-xs-12">
+        <h3>{{fundDetails.meta.scheme_name}}</h3>
+        <p>{{fundDetails.meta.scheme_category}}</p>
+        <div class="row">
+            <div class="col-xs-12">
+                <google-chart [type]="type" 
+                            [data]="data"
+                            [columns]="columnnames"
+                            [options]="options"
+                            [width]="width"
+                            [height]="height"
+                            dynamicResize="true">
+                </google-chart>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <label for="fundHouse">Fund House  </label>
+                <label for="val">{{fundDetails.meta.fund_house}}</label>
+            </div>
+        </div>
+    </div>
 </div>
