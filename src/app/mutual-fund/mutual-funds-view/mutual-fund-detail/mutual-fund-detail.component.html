@@ -4,9 +4,9 @@
             <div class="col-md-8">
                 <h3>{{fundDetails.meta.scheme_name}} </h3>
                 <p>
-                   <span [ngStyle]="{'color': changePercent> 0 ? 'green':'red'}">
+                   <strong [ngStyle]="{'color': changePercent> 0 ? 'green':'red'}">
                        {{currentNav | currency :'INR'}} ({{changePercent | percent :'1.1-2'}})
-                    </span>
+                    </strong>
                     as on {{fundDetails.data[0].date}}
                 </p>
             </div>
@@ -25,49 +25,48 @@
                               [height]="chartConfig.height">
                 </google-chart>
             </div>
-            <div class="col-md-3 form-group" *ngIf="addFundToPortfolio">
+            <div class="col-md-3">
                 <div class="row">
-                    <label for="fundinfo">Fund Information for Portfolio</label>
+                    <label for="fundHouse">Fund House</label>
+                    <p>{{fundDetails.meta.fund_house}}</p>
                 </div>
-                <form (ngSubmit)="onAddFund()" #fundDetailForPortfolio="ngForm">
-                    <div class="row">
-                        <label for="currentInvestment">Current Investment</label>
-                        <input type="number"
-                               name="currentInvestment"
-                               id="currentInvestement"
-                               class="form-control" 
-                               ngModel
-                               required>
+                <div class="row">
+                    <label for="fundHouse">Scheme Type</label>
+                    <p>{{fundDetails.meta.scheme_type}}</p>
+                </div>
+                <div class="row">
+                    <label for="fundHouse">Scheme Category</label>
+                    <p>{{fundDetails.meta.scheme_category}}</p>
+                </div>
+                <div class="row" *ngIf="addFundToPortfolio">
+                    <div class="col-md-8">
+                        <form (ngSubmit)="onAddFund()" #fundDetailForPortfolio="ngForm">
+                            <div class="row">
+                                <label for="currentInvestment">Current Investment</label>
+                                <input type="number"
+                                    name="currentInvestment"
+                                    id="currentInvestement"
+                                    class="form-control" 
+                                    ngModel
+                                    required>
+                            </div>
+                            <div class="row">
+                                <label for="currentUnit">Current Unit Holding</label>
+                                <input type="number"
+                                    name="currentUnit"
+                                    id="currentUnit"
+                                    class="form-control"
+                                    ngModel
+                                    required>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <button class="btn btn-success" type="submit" [disabled]="fundDetailForPortfolio.invalid">Save</button> |
+                                <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row">
-                        <label for="currentUnit">Current Unit Holding</label>
-                        <input type="number"
-                               name="currentUnit"
-                               id="currentUnit"
-                               class="form-control"
-                               ngModel
-                               required>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <button class="btn btn-success" type="submit" [disabled]="fundDetailForPortfolio.invalid">Save</button> |
-                        <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label for="fundHouse">Fund House</label>
-                <p>{{fundDetails.meta.fund_house}}</p>
-            </div>
-            <div class="col-md-4">
-                <label for="fundHouse">Scheme Type</label>
-                <p>{{fundDetails.meta.scheme_type}}</p>
-            </div>
-            <div class="col-md-4">
-                <label for="fundHouse">Scheme Category</label>
-                <p>{{fundDetails.meta.scheme_category}}</p>
+                </div>
             </div>
         </div>
     </div>
