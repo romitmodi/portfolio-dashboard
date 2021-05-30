@@ -1,7 +1,15 @@
 <div class="row" *ngIf="fundDetails">
     <div class="col-xs-12">
-        <h3>{{fundDetails.meta.scheme_name}}</h3>
-        <p>{{fundDetails.meta.scheme_category}}</p>
+        <div class="row">
+            <div class="col-xs-8">
+                <h3>{{fundDetails.meta.scheme_name}} </h3>
+                <p>{{fundDetails.meta.scheme_category}}</p>
+            </div>
+            <div class="col-xs-4">
+                <br/>
+                <button class="btn btn-primary" type="button">Add to My Portfolio</button>
+            </div>
+        </div>        
         <div class="row">
             <div class="col-xs-12">
                 <google-chart [type]="chartConfig.type"
