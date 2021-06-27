@@ -1,1 +1,31 @@
-<p>shares-view works!</p>
+<div class="row">
+    <div class="col-md-12 form-group">
+        <form #shareSearchForm>
+            <div class="row">
+                <div class="col-md-2">
+                    <select class="form-control"
+                            name="marketName"
+                            ngModel="nse"
+                            #markeyName>
+                        <option value="nse">NSE</option>
+                        <option value="bse">BSE</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <input type="text"
+                           name="shareName"
+                           class="form-control"
+                           placeholder="Enter share name to search"
+                           required
+                           ngModel
+                           #shareName>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            [disabled]="shareSearchForm.invalid">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
